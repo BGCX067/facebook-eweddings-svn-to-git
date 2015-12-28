@@ -1,0 +1,77 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="FacebookApp.Site" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"> 
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    <link rel="Stylesheet" type="text/css" href="css/fbstyle.css" />
+    <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>    
+    <asp:ContentPlaceHolder ID="header" runat="server"></asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 769px;
+        }
+        .style2
+        {
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Support dynamic resizing of iframe details here: http://wiki.developers.facebook.com/index.php/Resizable_IFrame -->
+    <div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div>
+    <script type="text/javascript">
+    FB_RequireFeatures(["CanvasUtil"], function()
+    { 
+    FB.XdComm.Server.init("xd_receiver.htm");
+    FB.CanvasClient.startTimerToSizeToContent(); 
+    });
+    </script>    
+    <form id="MainForm" runat="server">
+
+        <!--AJAX SCRIPT MANAGER-->
+        <asp:ScriptManager id="ScriptManager" runat="server" AsyncPostBackTimeout=36000>
+        </asp:ScriptManager>
+	    <table width="100%" cellspacing="0" cellpadding="0" border="0" >
+			<tr style="height:100px" valign="top">
+				<td>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imag/logo2.bmp"  />				   
+				</td>
+				<td align="right">
+				    <asp:Image ID="Image2" runat="server" ImageUrl="~/Imag/paulicasado.jpg" Height="100px"/>
+				</td>
+			</tr>
+	    </table>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr style="height:30px" class = fbbutton>
+			    <td align=center valign=center class="style1">
+			        <h1 class="style2">eWeddings</h1> 
+			    </td>
+				<td align="right" valign="bottom">
+				    <asp:ContentPlaceHolder ID="Menu" runat="server">
+					</asp:ContentPlaceHolder>
+                </td>
+			</tr>
+			<tr style="height:30px">
+			    <td colspan="2">&nbsp;</td>
+			</tr>
+			<tr style="height:500px">				
+				<td valign="top" colspan="2">
+				
+				    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tr>
+                            <td style="width:100%">
+                                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+					            </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                        
+                    </table>
+					
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

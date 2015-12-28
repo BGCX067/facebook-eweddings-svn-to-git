@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Facebook Application Starter Kit</title>
+  <style type="text/css">
+  body { 
+    font-family: Verdana; 
+    font-size: 0.7em;
+  }
+  h1 {
+    font-size:14.0pt;
+    font-family: Verdana;
+    color:#0070C0;
+  }  
+  </style>
+</head>
+<body>
+  <h1>
+    Facebook Application Starter Kit</h1>
+  Starter Kit created by <a href="http://www.stevetrefethen.com/blog/">Steve Trefethen</a><br />
+  <a href="http://www.stevetrefethen.com/blog/">http://www.stevetrefethen.com/blog/</a><br />
+  Updated: December 28, 2008   <p>For up-to-date Starter Kit information refer to my         <a href="http://www.stevetrefethen.com/wiki/Facebook%2520application%2520development%2520in%2520ASP.NET.ashx">
+        wiki page</a>.</p>
+  Welcome to your new <strong>ASP.NET Facebook Application</strong>. Follow the steps below
+  to use this project to build your own Facebook application.<br />
+  <br />
+  Revision History:<br />
+    0.8<br />
+&nbsp; - Added support for
+    <a href="http://wiki.developers.facebook.com/index.php/Resizable_IFrame">
+    dynamically resizable iframe</a> which prevents an iframe scrollbar though has 
+    some side effects/caveats. Based on Javascript sample from Facebook<br />
+&nbsp; - Added an example of
+    <a href="http://www.stevetrefethen.com/blog/AddingXFBMLSupportToTheFacebookStarterKit.aspx">
+    XFBML</a> which requires xd_receiver.htm (included) allowing for a 
+    <a href="http://wiki.developers.facebook.com/index.php/Cross_Domain_Communication_Channel">Cross Domain Communication Channel</a> <br />
+&nbsp; - Added example of using FQL, refer to FQL.aspx<br />
+&nbsp; - Updated Facebook Dev Toolkit assemblies<br />
+&nbsp; - Added Facebook stylesheet from
+    <a href="http://www.socialsnippets.com/snippets/how-to-style-an-application-like-facebook.aspx">
+    Bill Konrad</a><br />
+    0.71<br />
+&nbsp; - Updated to v2.0 of the Facebook Developer Toolkit meaning a <b>dependency 
+    on .NET 3.5</b><br />
+    0.7<br />
+&nbsp; - Updated to v2.0 RC3 of the Facebook Developer Toolkit<br />
+&nbsp; - Added FacebookApp namespace<br />
+&nbsp; - Updated code to use new Dev Toolkit<br />
+&nbsp; - Fix postback issue on Default.aspx<br />
+    0.6<br />
+&nbsp; - Updated Default.aspx and Site.Master to use CanvasIframe base classes.<br /> 
+&nbsp; - Added <a href="http://wiki.developers.facebook.com/index.php/ASP.NET">P3P header fix</a> for Internet Explorer<br />
+&nbsp; - These changes appear to fix <a href="http://www.stevetrefethen.com/blog/InvalidParameterErrorUsingFacebookDeveloperToolkit16.aspx">this error</a> regarding Invalid Parameter errors.<br />
+  0.5<br />
+  &nbsp; - Updated to v1.6 of Facebook Developer Toolkit<br />  
+  0.4<br />
+  &nbsp; - Updated to v1.5 of Facebook Developer Toolkit<br />  
+  0.3<br />
+  &nbsp; - Corrected broken contentplaceholder references<br />  
+  &nbsp; - Fixed Add App and Remove App URLs below<br />    
+  0.2<br />
+  &nbsp; - Moved Appkey/Secret into Web.config<br />
+  &nbsp; - Added example of fetching friends list<br />
+  &nbsp; - Cleaned up Default.aspx/Default.aspx.cs<br />
+  0.1<br />
+  &nbsp; - Initial Release<br />
+  <br />
+  <span style="color: #ff0066"><strong>PLEASE READ</strong></span>&nbsp;<br />
+  <br />
+  NOTE: These steps assume you already have a Facebook account, if not you should
+  <a href="https://register.facebook.com/r.php">create one now</a>. Many of the links
+  below will <em>not</em> work unless you have an FB account. Also note, this application
+  does not include the
+      Facebook Developer Toolkit assembly (Facebook.dll) and you'll
+  need to <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=CCD46762-45EC-4FBE-AD91-FC916671E734&displaylang=en">
+    download</a> and install it separately (you should do that now). You will also
+  need to add a reference to that assembly once installed.<br />
+  <br />
+  <strong>Setting up your application on Facebook (for updated steps refer to
+    <a href="http://www.stevetrefethen.com/wiki/Facebook%2520application%2520development%2520in%2520ASP.NET.ashx">
+    my wiki</a>)</strong><br />
+  <ol>
+    <li>Add the <a href="http://www.facebook.com/apps/application.php?id=2345053339">Developer
+      application</a> to your account (you need an account for that link to work) </li>
+    <li>Click <a href="http://www.facebook.com/developers/">Developer application</a> and select click <a href="http://www.facebook.com/developers/editapp.php?new">
+        Set Up New Application</a> </li>
+    <li>Enter the Application Name and expand Optional Fields </li>
+    <li>Under Base Options
+      <ul>
+        <li>Callback URL -> http://localhost:nnnn/MyFBApp/<br />
+          Using localhost makes it easy for you to debug locally. Trailing backslash is significant.</li>
+        <li>Select "Use iframe"</li>
+        <li>Click Yes for "Can your application be added on FaceBook"</li>
+        <li>Set TOS URL -> http://localhost:nnnn/MyFBApp/TOS.htm</li>
+      </ul>
+    </li>
+    <li>Under Installation Options
+      <ul>
+        <li>Check "Developer Mode"</li>
+        <li>Post-Add URL -> http://localhost:nnnn/MyApp/settings/AppAdd.aspx</li>
+        <li>Fill in your application description</li>
+        <li>Post-Remove URL -> http://localhost:nnnn/MyApp/settings/RemoveAdd.aspx</li>
+        <li>Site Nav -> http://apps.facebook.com/{appname} basically, use the same URL from
+          Canvas Page URL (see Optional Fields) </li>
+        <li>Edit URL -> your Canvas Page URL + /settings</li>
+      </ul>
+  </ol>
+  <strong>Accessing your application on Facebook<br />
+  </strong>
+  <br />
+  Once you've created your application you'll want to add it to your FB sidebar so
+  you can use it easily. To do that follow these steps:
+  <ol>
+    <li>Click Save then from the Developers Application browse to <a href="http://www.facebook.com/developers/apps.php">
+      My Applications</a> </li>
+    <li>Click View About Page then click Add Application </li>
+  </ol>
+  <p>
+    <strong>Configuring your application</strong></p>
+  <p>
+    The Facebook Developer platform requires both an APPKEY and a SECRET key that are
+    used for authentication. You need to follow these steps to set up the property variables.</p>
+  <p>
+  </p>
+  <ol>
+    <li>Open web.config and in the appsettings section set the Appkey and Secret
+      with the values from your application's Edit page on Facebook.</li>
+    <li>Fire up the browser and hit your http://apps.facebook.com/{appname};
+      and you're off!</li>
+  </ol>
+  <p>
+  </p>
+</body>
+</html>
